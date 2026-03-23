@@ -3,6 +3,11 @@
 ## AIM
 To develop an image classification model using transfer learning with VGG19 architecture for the given dataset.
 
+
+## NEURAL NETWORK :
+<img width="840" height="844" alt="image" src="https://github.com/user-attachments/assets/b8dfea6c-5e73-49a6-bebb-875e0abde87b" />
+
+
 ## DESIGN STEPS
 ### STEP 1: 
 Import required libraries and define image transforms.
@@ -184,16 +189,20 @@ predict_image(model,image_index=25,dataset=test_dataset)
 ### OUTPUT
 
 ## Training Loss, Validation Loss Vs Iteration Plot
-<img src="https://img.sanishtech.com/u/680297f9df10edcb617f9f5d77033c75.png" alt="Screenshot 2026-03-15 175923" width="786" height="718" loading="lazy" style="max-width:100%;height:auto;">
+<img width="705" height="585" alt="image" src="https://github.com/user-attachments/assets/83c5bd3a-f8a1-45d4-b301-734cc04397cd" />
+
 
 ## Confusion Matrix
-<img src="https://img.sanishtech.com/u/78959899ffc4c7a511b16b810fcea38d.png" alt="Screenshot 2026-03-15 180020" width="751" height="567" loading="lazy" style="max-width:100%;height:auto;">
+<img width="661" height="595" alt="image" src="https://github.com/user-attachments/assets/16608d75-df98-412e-a53b-2893a7cc684e" />
+
 
 ## Classification Report
-<img src="https://img.sanishtech.com/u/6a6d4b1ec440d901934f3abef439c2b1.png" alt="Screenshot 2026-03-15 180108" width="480" height="190" loading="lazy" style="max-width:100%;height:auto;">
+<img width="483" height="200" alt="image" src="https://github.com/user-attachments/assets/8b8fe14b-1ba2-4abd-9cd1-be0d6ebd759d" />
+
 
 ### New Sample Data Prediction
-<img src="https://img.sanishtech.com/u/9d7c60ad636ff9e67b7e9bf350b8069b.png" alt="Screenshot 2026-03-15 180143" width="1145" height="640" loading="lazy" style="max-width:100%;height:auto;">
+<img width="391" height="408" alt="image" src="https://github.com/user-attachments/assets/cb33dd8c-3c1e-46bb-a413-ba87445d7e71" />
+
 
 ## RESULT
 VGG19 model was fine-tuned and tested successfully. The model achieved good accuracy with correct predictions on sample test images.
