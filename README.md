@@ -3,7 +3,10 @@
 ## AIM
 To develop an image classification model using transfer learning with VGG19 architecture for the given dataset.
 
+ ## Problem Statement:
 
+ Image classification is a fundamental task in computer vision where images are categorized into predefined classes. The objective of this project is to develop an image classification model using transfer learning with the pre-trained VGG19 architecture, adapting its learned features to the given dataset, and to evaluate the model’s performance using appropriate metrics.
+ 
 ## NEURAL NETWORK :
 <img width="1044" height="700" alt="image" src="https://github.com/user-attachments/assets/0208641d-85bd-4935-9f3c-bee98d4292ed" />
 
