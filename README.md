@@ -123,57 +123,57 @@ def train_model(model,train_loader,test_loader,num_epochs=100):
         val_loss+=loss.item()
     val_losses.append(val_loss/len(test_loader))
     model.train()
-
-    print(f"Epoch [{epoch+1}/{num_epochs}], Train Loss: {train_losses[-1]:.4f}, Validation Loss: {val_losses[-1]:.4f}")
-  plt.figure(figsize=(8,6))
-  plt.plot(range(1,num_epochs+1),train_losses,label="Train Loss",marker="o")
-  plt.plot(range(1,num_epochs+1),val_losses,label="Validation Loss",marker="s")
-  plt.xlabel("Epochs")
-  plt.ylabel("Loss")
-  plt.title("Training and validation Loss")
-  plt.legend()
-  plt.show()
+    print("Name: DEEPAK JG")
+    print("Register Number:212224220019")
+    plt.figure(figsize=(8, 6))
+    plt.plot(range(1, num_epochs + 1), train_losses, label='Train Loss', marker='o')
+    plt.plot(range(1, num_epochs + 1), val_losses, label='Validation Loss', marker='s')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.title('Training and Validation Loss')
+    plt.legend()
+    plt.show()
   
 device=t.device("cuda" if t.cuda.is_available() else "cpu")
 model=model.to(device)
 train_model(model,train_loader,test_loader)
 
-def test_model(model,test_loader):
-  model.eval()
-  correct=0
-  total=0
-  all_preds=[]
-  all_labels=[]
+def test_model(model, test_loader):
+    model.eval()
+    correct = 0
+    total = 0
+    all_preds = []
+    all_labels = []
 
-  with t.no_grad():
-    for images,labels in test_loader:
-      images=images.to(device)
-      labels=labels.float().unsqueeze(1).to(device)
+    with torch.no_grad():
+        for images, labels in test_loader:
+            images, labels = images.to(device), labels.to(device)
+            outputs = model(images)
+            _, predicted = torch.max(outputs, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+            all_preds.extend(predicted.cpu().numpy())
+            all_labels.extend(labels.cpu().numpy())
 
-      outputs=model(images)
-      probs=t.sigmoid(outputs)
-      predicted=(probs > 0.5).int()
-      total+=labels.size(0)
-      correct+=(predicted==labels.int()).sum().item()
+    accuracy = correct / total
+    print(f'Test Accuracy: {accuracy:.4f}')
 
-      all_preds.extend(predicted.cpu().numpy())
-      all_labels.extend(labels.cpu().numpy().astype(int))
-  accuracy=correct/total
-  print(f"Test Accuracy: {accuracy:.4f}")
+    # Compute confusion matrix
+    cm = confusion_matrix(all_labels, all_preds)
+    print("Name: DEEPAK JG        ")
+    print("Register Number:212224220019        ")
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=train_dataset.classes, yticklabels=train_dataset.classes)
+    plt.xlabel('Predicted')
+    plt.ylabel('Actual')
+    plt.title('Confusion Matrix')
+    plt.show()
 
-  class_names=['Negative','Positive']
-  cm=confusion_matrix(all_labels,all_preds)
-  plt.figure(figsize=(6,5))
-  sns.heatmap(cm,annot=True,fmt='d',cmap='Blues',xticklabels=class_names,yticklabels=class_names)
-  plt.xlabel("Predicted")
-  plt.ylabel("Actual")
-  plt.title("Confusion Matrix")
-  plt.show()
-
-  
-  print("Classification Report :")
-  print(classification_report(all_labels,all_preds,target_names=class_names))
-test_model(model,test_loader)
+    # Print classification report
+    print("Name : DEEPAK JG")
+    print("Register Number : 212224220019")
+    print("Classification Report:")
+    print(classification_report(all_labels, all_preds, target_names=train_dataset.classes))
 
 def predict_image(model,image_index,dataset):
   model.eval()
